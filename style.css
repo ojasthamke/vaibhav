@@ -110,16 +110,17 @@ body {
 .pizza-hero {
     position: absolute;
     top: 50%;
-    left: 120%;
+    left: 50%;
     width: 80px;
     height: 80px;
-    margin-top: -40px;
     object-fit: cover;
     border-radius: 50%;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
     animation: revolve 60s linear infinite;
     opacity: 1;
-    will-change: transform, left;
+    will-change: transform;
+    backface-visibility: hidden; /* Prevent jitter/shake */
+    transform-style: preserve-3d;
 }
 
 .pizza-hero:nth-child(1) { animation-delay: 0s; }
@@ -132,13 +133,16 @@ body {
 .pizza-hero:nth-child(8) { animation-delay: -52.5s; }
 
 @keyframes revolve {
-    0% { left: 120%; transform: scale(0.6) rotate(0deg); opacity: 0; }
+    0% { transform: translate(70vw, -50%) scale(0.6) rotate(0deg); opacity: 0; }
     5% { opacity: 1; }
-    48% { left: 50%; transform: translateX(-50%) scale(1) rotate(172deg); }
-    50% { left: 50%; transform: translateX(-50%) scale(3.5) rotate(180deg); z-index: 100; }
-    52% { left: 50%; transform: translateX(-50%) scale(1) rotate(188deg); }
+
+    /* Smooth transition using only translate for movement */
+    40% { transform: translate(15vw, -50%) scale(1) rotate(144deg); }
+    50% { transform: translate(-50%, -50%) scale(2.2) rotate(180deg); }
+    60% { transform: translate(-115vw, -50%) scale(1) rotate(216deg); }
+
     95% { opacity: 1; }
-    100% { left: -20%; transform: scale(0.6) rotate(360deg); opacity: 0; }
+    100% { transform: translate(-180vw, -50%) scale(0.6) rotate(360deg); opacity: 0; }
 }
 
 .order-btn {
@@ -275,46 +279,46 @@ body {
 /* Mobile Optimizations */
 @media (max-width: 768px) {
     .logo {
-        font-size: 16px;
-        top: 20px;
-        left: 20px;
-        background: rgba(0,0,0,0.3);
-        padding: 5px;
-        border-radius: 5px;
+        font-size: 18px;
+        top: 15px;
+        left: 15px;
+        background: none;
+        padding: 0;
     }
 
     .cart-icon {
-        top: 20px;
-        right: 20px;
-        padding: 5px 12px;
-        font-size: 14px;
+        top: 15px;
+        right: 15px;
+        padding: 8px 16px;
+        font-size: 16px;
     }
 
-    .section-title { font-size: 2rem; margin-bottom: 60px; }
+    .section-title { font-size: 2.5rem; margin-bottom: 80px; }
 
     .products-grid {
         grid-template-columns: 1fr;
-        padding: 0 10px;
+        padding: 0 20px;
+        gap: 80px;
     }
 
     .product-card {
-        margin-top: 80px;
-        padding: 20px;
+        margin-top: 40px;
+        padding: 30px;
     }
 
     .product-card img {
-        width: 150px;
-        height: 150px;
-        margin-top: -75px;
+        width: 180px;
+        height: 180px;
+        margin-top: -90px;
     }
 
     .white-strip {
-        height: 80px;
+        height: 120px;
     }
 
     .pizza-hero {
-        width: 60px;
-        height: 60px;
+        width: 90px;
+        height: 90px;
     }
 
     .cart-drawer {
@@ -324,7 +328,7 @@ body {
     }
 
     .order-btn {
-        padding: 12px 30px;
-        font-size: 16px;
+        padding: 15px 40px;
+        font-size: 18px;
     }
 }
