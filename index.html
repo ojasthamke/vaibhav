@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Revolution - Melted Food World</title>
+    <!-- Importing fancy fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blur-layer" id="bg-layer"></div>
+
+    <div class="logo">
+        melted<br>food<br>world
+    </div>
+
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒 Cart <span class="cart-count" id="cart-count">0</span>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="close-cart" onclick="toggleCart()">✕ Close</div>
+        <h2 class="cart-title">Your Order</h2>
+        <div class="cart-items" id="cart-items">
+            <!-- Items added via JavaScript will appear here -->
+        </div>
+        <div class="cart-total">
+            <h3>Total: <span id="cart-total-price">$0.00</span></h3>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <div class="main-wrapper" id="main-wrapper">
+        <div class="section-container">
+            <!-- Hero Section -->
+            <section class="hero" id="hero-section">
+                <div class="white-strip" id="hero-strip">
+                    <div class="pizza-wrapper">
+                        <img src="https://img.freepik.com/free-photo/crispy-mixed-pizza-with-olives-sausage_23-2148262540.jpg" class="pizza-hero" alt="pizza 1">
+                        <img src="https://img.freepik.com/premium-photo/pepperoni-pizza-cheese-pizza-food-pizza-pizza-pepperoni-mozzarella-mozzarella-cheese-cheese_37586805.jpg" class="pizza-hero" alt="pizza 2">
+                        <img src="https://img.freepik.com/free-photo/top-view-pizza-with-chopped-vegetables-mushrooms-sausages_23-2148524321.jpg" class="pizza-hero" alt="pizza 3">
+                        <img src="https://img.freepik.com/free-photo/chicken-pizza-with-bell-pepper-olives_23-2148262528.jpg" class="pizza-hero" alt="pizza 4">
+                        <img src="https://img.freepik.com/free-photo/top-view-pizza-with-chopped-vegetables-mushrooms-sausages-sliced_23-2148524325.jpg" class="pizza-hero" alt="pizza 5">
+                        <img src="https://img.freepik.com/free-photo/crispy-salami-pizza-with-cheese-tomatoes-sausage-pepper_23-2148262534.jpg" class="pizza-hero" alt="pizza 6">
+                        <img src="https://img.freepik.com/premium-photo/pizza-with-chicken-peppers-black-olives_235790-347.jpg" class="pizza-hero" alt="pizza 7">
+                        <img src="https://img.freepik.com/free-photo/mixed-ingredient-pizza-with-cheese-tomatoes_23-2148262522.jpg" class="pizza-hero" alt="pizza 8">
+                    </div>
+                </div>
+                <button class="order-btn" id="hero-btn" onclick="showProducts()">Order Now</button>
+                <div class="scroll-hint">Click Order Now to see pizzas</div>
+            </section>
+
+            <!-- Products Catalogue -->
+            <section class="products-section" id="catalogue">
+                <button class="back-btn" onclick="showHero()">↑ Back to Top</button>
+                <h2 class="section-title">The Collection</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/free-photo/crispy-mixed-pizza-with-olives-sausage_23-2148262540.jpg" alt="Melted Classic">
+                        <h3>Melted Classic</h3>
+                        <p>Crispy mixed pizza with olives and sausage.</p>
+                        <span class="product-price">$12.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Melted Classic', 12.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/premium-photo/pepperoni-pizza-cheese-pizza-food-pizza-pizza-pepperoni-mozzarella-mozzarella-cheese-cheese_37586805.jpg" alt="Crimson Pepperoni">
+                        <h3>Crimson Pepperoni</h3>
+                        <p>Mozzarella cheese and spicy pepperoni slices.</p>
+                        <span class="product-price">$14.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Crimson Pepperoni', 14.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/free-photo/top-view-pizza-with-chopped-vegetables-mushrooms-sausages_23-2148524321.jpg" alt="Gothic Garden">
+                        <h3>Gothic Garden</h3>
+                        <p>Chopped vegetables, mushrooms, and sausages.</p>
+                        <span class="product-price">$13.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Gothic Garden', 13.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/free-photo/chicken-pizza-with-bell-pepper-olives_23-2148262528.jpg" alt="The Carnivore">
+                        <h3>The Carnivore</h3>
+                        <p>Tender chicken with bell peppers and olives.</p>
+                        <span class="product-price">$16.99</span>
+                        <button class="add-to-cart" onclick="addToCart('The Carnivore', 16.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/free-photo/top-view-pizza-with-chopped-vegetables-mushrooms-sausages-sliced_23-2148524325.jpg" alt="Smoky Inferno">
+                        <h3>Smoky Inferno</h3>
+                        <p>Freshly sliced vegetables and savory mushrooms.</p>
+                        <span class="product-price">$15.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Smoky Inferno', 15.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/free-photo/crispy-salami-pizza-with-cheese-tomatoes-sausage-pepper_23-2148262534.jpg" alt="Truffle Void">
+                        <h3>Truffle Void</h3>
+                        <p>Crispy salami with melted cheese and peppers.</p>
+                        <span class="product-price">$18.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Truffle Void', 18.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/premium-photo/pizza-with-chicken-peppers-black-olives_235790-347.jpg" alt="Forest Pesto">
+                        <h3>Forest Pesto</h3>
+                        <p>Grilled chicken, peppers, and black olives.</p>
+                        <span class="product-price">$14.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Forest Pesto', 14.99)">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img.freepik.com/free-photo/mixed-ingredient-pizza-with-cheese-tomatoes_23-2148262522.jpg" alt="Ocean Abyss">
+                        <h3>Ocean Abyss</h3>
+                        <p>Mixed ingredients with tomatoes and double cheese.</p>
+                        <span class="product-price">$19.99</span>
+                        <button class="add-to-cart" onclick="addToCart('Ocean Abyss', 19.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const bgLayer = document.getElementById('bg-layer');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartItemsList = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const mainWrapper = document.getElementById('main-wrapper');
+
+        let cart = [];
+        let mouseX = 50;
+        let mouseY = 50;
+
+        // Interactive background
+        function updateGradient() {
+            bgLayer.style.background = `radial-gradient(circle at ${mouseX}% ${mouseY}%, var(--primary-red) 0%, black 80%)`;
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 100;
+            mouseY = (e.clientY / window.innerHeight) * 100;
+            updateGradient();
+        });
+
+        // Navigation logic
+        function showProducts() {
+            mainWrapper.classList.add('view-products');
+        }
+
+        function showHero() {
+            mainWrapper.classList.remove('view-products');
+        }
+
+        // Tap Glow Effect
+        document.addEventListener('click', (e) => {
+            const glow = document.createElement('div');
+            glow.className = 'tap-glow';
+            glow.style.left = e.pageX + 'px';
+            glow.style.top = e.pageY + 'px';
+            document.body.appendChild(glow);
+            setTimeout(() => glow.remove(), 600);
+        });
+
+        function toggleCart() {
+            cartDrawer.classList.toggle('open');
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            if (!cartDrawer.classList.contains('open')) {
+                toggleCart();
+            }
+        }
+
+        function updateCart() {
+            cartCount.innerText = cart.length;
+            cartItemsList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>$${item.price.toFixed(2)}</p>
+                    </div>
+                    <span style="cursor:pointer; font-size: 11px; opacity: 0.5;" onclick="removeFromCart(${index})">Remove</span>
+                `;
+                cartItemsList.appendChild(div);
+            });
+            cartTotalPrice.innerText = `$${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Initialize gradient
+        updateGradient();
+    </script>
+</body>
+</html>
